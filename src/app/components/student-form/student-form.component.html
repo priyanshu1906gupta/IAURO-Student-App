@@ -1,0 +1,39 @@
+<fieldset>
+  <legend>Student Form</legend>
+  <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput placeholder="Enter your name" formControlName="name" onkeypress="return !(event.charCode >= 48 && event.charCode <= 57 || event.charCode == 46 )" name="name">
+      <mat-error *ngIf="registerForm.get('name').hasError('required')">
+        *Name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Gender</mat-label>
+      <mat-select formControlName="gender" name="Gender">
+        <mat-option value="Male">Male</mat-option>
+        <mat-option value="Female">Female</mat-option>
+      </mat-select>
+      <mat-error *ngIf="registerForm.get('gender').hasError('required')">
+        *Gender is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Course</mat-label>
+      <mat-select formControlName="course" name="course">
+        <mat-option value="Engineering">Engineering</mat-option>
+        <mat-option value="Medical">Medical</mat-option>
+        <mat-option value="Arts">Arts</mat-option>
+      </mat-select>
+      <mat-error *ngIf="registerForm.get('course').hasError('required')">
+        *Course is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-checkbox formControlName="acceptTerms" name="acceptTerms">I accept the terms</mat-checkbox>
+    
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</fieldset>
